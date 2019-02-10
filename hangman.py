@@ -12,7 +12,6 @@ word = random.choice(rand_words)
 word_as_list = list(word)
 
 guessed_letters = []
-attempts = 0
 encrypted_word = []
 for i in word:
     encrypted_word.append('*')
