@@ -37,17 +37,20 @@ def play_game():
         enc_word_as_string = ''.join(encrypted_word)
         print(str(enc_word_as_string))
         print('You have %i guesses left.' % attempts_left)
-        guess = input('Guess a letter: ')
+        guess = input('Guess a letter: ').lower()
 
-        if not guess.islower():
-            print('Please guess a lowercase letter!')
+        if not guess.isalpha():
+            print('Invalid guess: Input is not a letter; please try again')
             continue
         elif len(guess) > 1:
-            print('Your guess must only be one character.')
+            print('Invalid guess: Your guess must only be one character')
             continue
-
+        elif guess == '':
+            print('Invalid guess: Please enter something')
+            continue
+        
         if guess in guessed_letters:
-            print('You already guessed this letter; try again')
+            print('Invalid guess: You already guessed this letter; try again')
             continue
         else:
             if guess not in word:
@@ -62,6 +65,7 @@ def play_game():
                         encrypted_word[i] = guess
                 guessed_letters.append(guess)
                 if encrypted_word == word_as_list:
+                    print(word)
                     print('You win!')
                     break
 
