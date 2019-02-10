@@ -27,6 +27,7 @@ def play_game():
     word_as_list = list(word)
 
     guessed_letters = []
+    attempts = 0
     encrypted_word = []
     for i in word:
         encrypted_word.append('*')
@@ -35,7 +36,12 @@ def play_game():
     while attempts_left > 0:
         enc_word_as_string = ''.join(encrypted_word)
         print(str(enc_word_as_string))
-        print('You have %i guesses left.' % attempts_left)
+
+        if attempts_left == 1:
+            print('You have 1 guess left.')
+        else:
+            print('You have %i guesses left.' % attempts_left)    
+        
         guess = input('Guess a letter: ').lower()
 
         if not guess.isalpha():
